@@ -34,13 +34,19 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 
 
 ## 📸 Zrzuty ekranu / Screenshots
-- Lista zadań / Tasks list
+
+
+## Screenshots
 
 - Dodawanie zadania / Add task
-
+  <img src="screenshots/1.png"/>
+- Lista zadań / Tasks list
+  <img src="screenshots/2.png"/>
+  <img src="screenshots/3.png"/>
 - Statystyki / Statistics
+  <img src="screenshots/4.png"/>
 
-
+  
 
 
 ## ⚡ Instalacja / Installation

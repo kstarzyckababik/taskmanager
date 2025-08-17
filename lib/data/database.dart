@@ -7,9 +7,8 @@ class ToDoDataBase {
 
   Box<ToDo> get box => Hive.box<ToDo>('mybox');
 
-  //first time run app
-  void createInitialData() {
 
+  void createInitialData() {    //first time run app  - for test test
      var obj1 = ToDo(
           id: 1,
           title: "title",
@@ -27,8 +26,6 @@ class ToDoDataBase {
           finishTime: null);
      addOrUpdate(obj1.id, obj1);
      addOrUpdate(obj2.id, obj2);
-
-
 
   }
 

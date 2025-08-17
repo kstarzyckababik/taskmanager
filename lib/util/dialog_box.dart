@@ -21,40 +21,112 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       backgroundColor: Colors.white,
-      content: Container(
-        height: 300,
+      content: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //
+            Row(
+              children: [
+                Icon(Icons.task_alt, color: Colors.indigoAccent, size: 28),
+                SizedBox(width: 10),
+                Text(
+                  "New Task",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigoAccent,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+
+            //
             TextField(
               controller: title_controller,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Add a new task"),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                hintText: "Add a new task",
+                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              ),
             ),
+            SizedBox(height: 12),
+
+            // Opis
             TextField(
               controller: description_controller,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Add optional description"),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                hintText: "Add optional description",
+                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              ),
+              maxLines: 3,
             ),
-            TextButton(
+            SizedBox(height: 12),
+
+            //
+            TextButton.icon(
               onPressed: () => pickDate(context),
-              child: Text("Wybierz datę"),
+              icon: Icon(Icons.calendar_today, color: Colors.indigoAccent),
+              label: Text(
+                "Select deadline",
+                style: TextStyle(color: Colors.indigoAccent),
+              ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.grey.shade100,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 12),
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                MyButton(text: "Save", onPressed: onSave),
-                const SizedBox(width: 8),
-                MyButton(text: "Cancel", onPressed: onCancel)
-              ],
-            )
+            SizedBox(height: 16),
+
+            //
+            TextButton(
+              onPressed: onSave,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.indigoAccent,
+                padding: EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              child: Text(
+                "Save",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            SizedBox(height: 12),
+
+            //
+            TextButton(
+              onPressed: onCancel,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.grey.shade200,
+                padding: EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              child: Text(
+                "Cancel",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
+
+
+
 
   Future<void> pickDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(

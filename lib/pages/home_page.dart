@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     if (db.loadData().isEmpty) {
-      db.createInitialData(); // do usuniecie w finalnej wersji
+     // db.createInitialData();  - for tests
       taskList = db.loadData();
     } else {
       taskList = db.loadData();
@@ -68,12 +68,17 @@ class _HomePageState extends State<HomePage> {
 loadCurrentData(selectedIndex);
 
       title_controller.clear();
+      description_controller.clear();
+      selectedDate = DateTime.now();
+
+
     });
 
     Navigator.of(context).pop();
   }
 
   void createNewTask() {
+    selectedDate = DateTime.now();
     showDialog(
       context: context,
       builder: (context) {
@@ -82,7 +87,7 @@ loadCurrentData(selectedIndex);
           description_controller: description_controller,
           onDateSelected: (pickedDate) {
             setState(() {
-              selectedDate = pickedDate; // aktualizacja w rodzicu
+              selectedDate = pickedDate;
             });
           },
           onSave: saveNewTask,
@@ -105,12 +110,8 @@ loadCurrentData(selectedIndex);
 
   void deleteTask(int index) {
     setState(() {
-      List<ToDo> lista = db.loadData();
-
-      ToDo taskToRemove = lista[index];
-
+      ToDo taskToRemove = taskList[index];
       db.delete(taskToRemove.id);
-
     loadCurrentData(selectedIndex);
     });
   }
@@ -118,6 +119,7 @@ loadCurrentData(selectedIndex);
   void editTask(int index) {
     title_controller.text = taskList[index].title;
     description_controller.text = taskList[index].description;
+    selectedDate = taskList[index].deadline;
 
     showDialog(
       context: context,
@@ -127,27 +129,30 @@ loadCurrentData(selectedIndex);
           description_controller: description_controller,
           onDateSelected: (pickedDate) {
             setState(() {
-              selectedDate = pickedDate; // aktualizacja w rodzicu
+              selectedDate = pickedDate;
             });
           },
           onSave: () {
             setState(() {
-              List<ToDo> lista = db.loadData();
-              ToDo taskToEdit = lista[index];
+
+              ToDo taskToEdit = taskList[index];
 
               taskToEdit.title = title_controller.text;
               taskToEdit.description = description_controller.text;
               taskToEdit.deadline = selectedDate;
-              ///dodac description i date
+
+
               db.addOrUpdate(taskToEdit.id, taskToEdit);
               loadCurrentData(selectedIndex);
 
               title_controller.clear();
+              description_controller.clear();
             });
             Navigator.of(context).pop();
           },
           onCancel: () {
             title_controller.clear();
+            description_controller.clear();
             Navigator.of(context).pop();
           },
         );
@@ -160,17 +165,36 @@ loadCurrentData(selectedIndex);
     return Scaffold(
         backgroundColor: Colors.indigoAccent,
         appBar: AppBar(
-          title: Text("Menadżer Zadań Osobistych"),
+          backgroundColor: Colors.white,
+          elevation: 4,
+          centerTitle: true,
+          title: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.task_alt, color: Colors.indigoAccent.shade700),
+              SizedBox(width: 8),
+              Text(
+                "Personal Task Manager",
+                style: TextStyle(
+                  color: Colors.indigoAccent.shade700,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
         ),
+
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
             heroTag: "btn1",
             onPressed: createNewTask,
+            backgroundColor: Colors.orange.shade700,
             child: Icon(Icons.add),
           ),
-          const SizedBox(width: 16), // odstęp
+          const SizedBox(width: 16), //
           FloatingActionButton(
             heroTag: "btn2",
             onPressed: openStatisticDialog,

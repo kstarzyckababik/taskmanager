@@ -63,22 +63,34 @@ class ToDoTile extends StatelessWidget {
                   onChanged: onChanged,
                   activeColor: Colors.indigoAccent,
                 ),
+                Expanded(
+                  child:
                 Text(
                   taskName,
                   style: TextStyle(
+                    color: Colors.indigoAccent.shade700,
+                    fontSize: 20,
                     decoration: taskCompleted
                         ? TextDecoration.lineThrough
-                        : TextDecoration.none,
+                        : TextDecoration.none),
+                    overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                   ),
-                )
+                ),
+
               ],
             ),
             Row(
               children: [
-                Text(
+                Expanded(
+                  child:
+                  Text(
                   taskDescription,
-                  style: TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: 15),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                 )
+                ),
               ],
             )
           ]),
@@ -88,7 +100,11 @@ class ToDoTile extends StatelessWidget {
   }
 
   Color checkDeadlineHighlight() {
-    if (deadline.difference(DateTime.now()).inMinutes > 0 &&
+    if(deadline.difference(DateTime.now()).inMinutes <= 0 &&
+        !taskCompleted) {
+      return Colors.redAccent;
+    }
+    if(deadline.difference(DateTime.now()).inMinutes > 0 &&
         deadline.difference(DateTime.now()).inMinutes < 60 &&
         !taskCompleted) {
       return Colors.redAccent;

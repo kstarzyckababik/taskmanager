@@ -15,16 +15,49 @@ class DialogStatistic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       backgroundColor: Colors.white,
-      content: Container(
-        height: 150,
+      content: SizedBox(
+        width: double.maxFinite,
         child: Column(
-            children: [
-              Text("Number of Done tasks: " + finishedTasks.length.toString()),
-              Text("Most productive day: " + countMostProductiveDay()),
-              Spacer(),
-              MyButton(text: "Cancel", onPressed: onCancel)
-            ]
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Number of Finished Tasks",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            SizedBox(height: 4),
+            Text(finishedTasks.length.toString(), style: TextStyle(fontSize: 14)),
+            SizedBox(height: 16),
+            Text(
+              "Most Productive Day",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            SizedBox(height: 4),
+            Text(countMostProductiveDay(), style: TextStyle(fontSize: 14)),
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: onCancel,
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.grey.shade200,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                  ),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
@@ -33,13 +66,17 @@ class DialogStatistic extends StatelessWidget {
   String countMostProductiveDay() {
     final days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     Map<int, int> counts = {
-      for (int i = 1; i <= 7; i++) i: 0, // weekday: count
+      for (int i = 1; i <= 7; i++) i: 0,
     };
 
     for (var task in finishedTasks) {
       int count = counts[task.finishTime!.weekday]!;
       count++;
       counts[task.finishTime!.weekday] = count;
+    }
+
+    if (counts.values.every((c) => c == 0)) {
+      return "none";
     }
 
     int bestDay = counts.entries.reduce(

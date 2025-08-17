@@ -1,11 +1,11 @@
-# Menadżer Zadań Osobistych / Personal Task Manager
+## ✅  Menadżer Zadań Osobistych / Personal Task Manager
 ##  Opis projektu / Project description
 
 
-Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala użytkownikom na tworzenie, organizowanie i śledzenie codziennych zadań. /The goal of this project is to create a mobile application in Flutter that allows users to create, organize, and track their daily tasks.
+Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala użytkownikom na tworzenie, organizowanie i śledzenie codziennych zadań. / The goal of this project is to create a mobile application in Flutter that allows users to create, organize, and track their daily tasks.
 
 
-## Funkcjonalności / Features
+## 📱 Funkcjonalności / Features
 
 
 ### Tworzenie zadań / Task creation
@@ -23,7 +23,7 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 - Liczba wykonanych zadań / Number of completed tasks
 - Najbardziej produktywny dzień tygodnia / Most productive day of the week
 
-## Technologie i wymagania / Technologies and requirements
+## 🔧 Technologie i wymagania / Technologies and requirements
 
 - Flutter – frontend aplikacji mobilnej / Flutter – mobile frontend
 - Hive – lokalna baza danych / Hive – local database
@@ -46,16 +46,19 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 ## ⚡ Instalacja / Installation
 
 1. Sklonuj repozytorium / Clone the repository
-
-```git clone   https://github.com/kstarzyckababik/taskmanager.git   ```
-
+```
+git clone   https://github.com/kstarzyckababik/taskmanager.git   
+```
 2. Zainstaluj zależności / Install dependencies
 
-```flutter pub get```
-
+```
+flutter pub get
+```
 3. Uruchom projekt w emulatorze lub na urządzeniu fizycznym / Run the project on an emulator or physical device
 
-```flutter run```
+```
+flutter run
+```
 
 	
 	

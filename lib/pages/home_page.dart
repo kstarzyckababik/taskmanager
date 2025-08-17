@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
 
     super.initState();
   }
+
   int selectedIndex = 0;
   final title_controller = TextEditingController();
   final description_controller = TextEditingController();
@@ -226,6 +227,10 @@ loadCurrentData(selectedIndex);
             label: "All",
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.upcoming),
+            label: "Upcoming",
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.done),
             label: "Finished",
           ),
@@ -248,7 +253,10 @@ loadCurrentData(selectedIndex);
         {
       taskList = db.loadData();
     }
-    else if (selectedIndex == 1){ //Finished Tab
+    else if (selectedIndex == 1){ //unFinished Tab
+      taskList = db.loadDataForUnDoneTasks();
+    }
+    else if (selectedIndex == 2){ //Finished Tab
       taskList = db.loadDataForDoneTasks();
     }
   }

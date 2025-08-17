@@ -41,6 +41,7 @@ class ToDoDataBase {
   
   List<ToDo> loadDataForDoneTasks(){
     List<ToDo> taskList = box.values.toList();
+    taskList.sort((a, b) => a.deadline.compareTo(b.deadline));
 
     List<ToDo> finishedTasks = [];
     taskList.forEach((task) {
@@ -51,7 +52,20 @@ class ToDoDataBase {
     
     return finishedTasks;
   }
-  
+
+  List<ToDo> loadDataForUnDoneTasks(){
+    List<ToDo> taskList = box.values.toList();
+    taskList.sort((a, b) => a.deadline.compareTo(b.deadline));
+
+    List<ToDo> unDoneTasks = [];
+    taskList.forEach((task) {
+      if (!task.isDone) {
+        unDoneTasks.add(task);
+      }
+    });
+
+    return unDoneTasks;
+  }
 
   Future<void> addOrUpdate(int key, ToDo todo) async {
     await box.put(key, todo);

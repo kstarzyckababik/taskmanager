@@ -47,7 +47,7 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 
 1. Sklonuj repozytorium / Clone the repository
 ```
-git clone   https://github.com/kstarzyckababik/taskmanager.git   
+git clone https://github.com/kstarzyckababik/taskmanager.git   
 ```
 2. Zainstaluj zależności / Install dependencies
 

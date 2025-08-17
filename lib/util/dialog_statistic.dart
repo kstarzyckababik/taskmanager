@@ -25,6 +25,24 @@ class DialogStatistic extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            Row(
+              children: [
+                Icon(Icons.bar_chart, color: Colors.indigoAccent, size: 28),
+                SizedBox(width: 10),
+                Text(
+                  "Statistics",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigoAccent,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+
+
             Text(
               "Number of Finished Tasks",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -32,6 +50,7 @@ class DialogStatistic extends StatelessWidget {
             SizedBox(height: 4),
             Text(finishedTasks.length.toString(), style: TextStyle(fontSize: 14)),
             SizedBox(height: 16),
+
             Text(
               "Most Productive Day",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -39,6 +58,8 @@ class DialogStatistic extends StatelessWidget {
             SizedBox(height: 4),
             Text(countMostProductiveDay(), style: TextStyle(fontSize: 14)),
             SizedBox(height: 24),
+
+
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -48,7 +69,8 @@ class DialogStatistic extends StatelessWidget {
                     backgroundColor: Colors.grey.shade200,
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   child: Text(
                     "OK",
@@ -62,6 +84,7 @@ class DialogStatistic extends StatelessWidget {
       ),
     );
   }
+
 
   String countMostProductiveDay() {
     final days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

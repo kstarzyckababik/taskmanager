@@ -198,7 +198,7 @@ loadCurrentData(selectedIndex);
           FloatingActionButton(
             heroTag: "btn2",
             onPressed: openStatisticDialog,
-            child: Icon(Icons.stacked_bar_chart),
+            child: Icon(Icons.bar_chart),
           ),
         ],
       ),

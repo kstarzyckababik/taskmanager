@@ -35,10 +35,11 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 
 ## 📸 Zrzuty ekranu / Screenshots
 
-  <img src="screenshots/1.png"/>
-  <img src="screenshots/2.png"/>
-  <img src="screenshots/3.png"/>
-  <img src="screenshots/4.png"/>
+<img src="screenshots/1.png" width="200"/>
+<img src="screenshots/2.png" width="200"/>
+<img src="screenshots/3.png" width="200"/>
+<img src="screenshots/4.png" width="200"/>
+
 
 
 ## ⚡ Instalacja / Installation

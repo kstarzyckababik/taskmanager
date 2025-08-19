@@ -9,16 +9,15 @@ Celem projektu jest stworzenie mobilnej aplikacji w Flutterze, która pozwala u�
 
 
 ### Tworzenie zadań / Task creation
-
 - Dodawanie tytułu zadania / Add task title
 - Opcjonalny opis / Optional description
 - Wybór deadline’u (data i godzina) / Choose a deadline (date and time)
 ### Wyświetlanie listy zadań / Task list
 - Sortowanie według deadline’u / Sorted by deadline
 - Możliwość zaznaczenia zadania jako wykonanego → automatyczne przeniesienie do sekcji Finished  / Mark tasks as completed → automatically moved to the Finished section
+- Lokalne przypomnienia o zbliżających się deadline’ach (zadania, które mają mniej niż godzinę do deadline’u, zmieniają kolor na czerwony) / Local reminders for upcoming deadlines (tasks with less than one hour to the deadline turn red)
 ### Edycja i usuwanie zadań / Edit and delete tasks
 - Obsługa gestów typu Slidable / Supports Slidable gestures
-- Lokalne przypomnienia o zbliżających się deadline’ach (zadania, które mają mniej niż godzinę do deadline’u, zmieniają kolor na czerwony) / Local reminders for upcoming deadlines (tasks with less than one hour to the deadline turn red)
 ### Statystyki / Statistics
 - Liczba wykonanych zadań / Number of completed tasks
 - Najbardziej produktywny dzień tygodnia / Most productive day of the week
